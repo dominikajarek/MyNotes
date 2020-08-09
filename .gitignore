@@ -1,0 +1,14 @@
+# IntelliJ and Maven
+.idea/
+*.iml
+out/
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+

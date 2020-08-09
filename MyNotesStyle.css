@@ -1,0 +1,19 @@
+.note {
+    border: none;
+    position: relative;
+}
+
+.note > input {
+    border: 1em;
+    outline: 0;
+    font-size: 1em;
+    padding: 1em 1em 1em 1em;
+}
+
+#input1, #input {
+    padding: 1em;
+    border-color: mediumpurple;
+    border-width: medium;
+    border-style: dashed;
+
+}
