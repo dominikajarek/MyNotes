@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>My Notes</title>
-    <script src="MyNotesScript.js" defer></script>
     <link rel="stylesheet" href="MyNotesStyle.css">
+    <script src="MyNotesScript.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
-<body>
-    <button id="add">add note</button>
+<body ondragover="dragOver(event)" ondrop="drop(event)">
+    <button id="add">
+        <i class="fas fa-plus"></i>
+    </button>
     <div class="note">
-
-        <label for="input"></label>
-        <input type="text" id="input" placeholder="title">
-        <label for="input1"></label>
-        <input type="text" id="input1" placeholder="your note">
-        <button id="remove">x</button>
+        <div class="noteCell" draggable="true" ondragstart="drag(event)">
+            <label for="title"></label>
+            <input type="text" id="title" placeholder="title">
+            <label for="input1"></label>
+            <input type="text" id="input1" placeholder="your note">
+            <input id="btn" type="button" value="x">
+        </div>
     </div>
 </body>
 </html>
