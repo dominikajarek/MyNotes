@@ -3,41 +3,43 @@
 }
 
 * {
-    font-family: 'Anonymous Pro', sans-serif;
+    font-family: 'Samanata', sans-serif;
 }
 
 body {
     background-image: url("pexels-photo-2512280.jpeg");
-    background-repeat: no-repeat;
     background-size: cover;
     background-position: right top 20%;
+    display: flex;
+    box-sizing: border-box;
 }
 
 .note {
     border: none;
-    width: 21%;
+    width: 15em;
+    height: 5em;
     padding-top: 1em;
 }
 
-input {
+textarea {
     border: 1em;
     outline: 0;
     font-size: 1em;
     padding: 1em 1em 1em 1em;
     background-color: Transparent;
     background-repeat:no-repeat;
-    overflow: hidden;
+    resize: both;
 }
 
-input[type=text], ::placeholder {
+input[type=textarea], ::placeholder {
     color: #1f1519
 }
 
-#title {
+.title {
     font-weight: bold;
 }
 
-.noteCell {
+.newNote {
     padding: 2em;
     border-color: rgba(46,41,49,0.5);
     border-width: medium;
@@ -48,22 +50,24 @@ input[type=text], ::placeholder {
     margin-top: 1em;
 }
 
-button {
+.removeButton {
+    width: 2em;
+    height: 2em;
+    right: 85%;
+    top: 80%;
+    position: absolute;
+    text-align: center;
+    padding: 0.1em;
+    border: none;
+    outline:none;
+    background-color: Transparent;
+    font-weight: bolder;
+}
+
+#addButton, #save-button, #load-button {
     width: 6em;
     height: 6em;
     position: relative;
-}
-
-#btn {
-    width: 1em;
-    height: 1em;
-    left: 85%;
-    top: 70%;
-    position: absolute;
-    text-align: center;
-}
-
-#btn, button {
     border: none;
     font-weight: bolder;
     cursor:pointer;
@@ -71,9 +75,12 @@ button {
     outline:none;
     background-color: Transparent;
     background-repeat:no-repeat;
-
 }
 
-#btn:hover, #add:hover {
+.removeButton:hover, #addButton:hover, #save-button:hover, #load-button:hover {
     box-shadow: var(--shadow);
+}
+
+#noteCell {
+    width: 20em;
 }

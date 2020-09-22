@@ -1,38 +1,82 @@
 let id = 0;
-const addNote = document.querySelector(".noteCell");
-const addNotes = document.querySelector(".note");
-const remove = document.getElementsByClassName("noteCell");
+
+(() => {
+    document.getElementById("addButton").addEventListener("click", function () {
+        createElement();
+    });
+    document.getElementById("save-button").addEventListener("click", saveToStorage);
+    document.getElementById("load-button").addEventListener("click", loadFromStorage);
+})();
 
 
-document.getElementById("add").addEventListener("click", function () {
-    let clone = addNote.cloneNode(true);
-    clone.id = "note " + id++;
-    addNotes.appendChild(clone);
-    addNote.after(clone);
-})
 
-$(addNotes).on('click', '#btn', function () {
-    if (remove.length  > 1) {
-        $(this).closest('.noteCell').remove();
+function createElement(elementTitle="", elementNote="") {
+    id++;
+    let elementId = "element" + id;
+    let titleId = "title" + id;
+    let noteId = "note" + id;
+    let buttonId = "button" + id;
+
+    let newNote = document.createElement("DIV");
+    newNote.setAttribute("class", "newNote");
+    newNote.setAttribute("id", elementId);
+
+    let title = document.createElement("TEXTAREA");
+    title.setAttribute("class", "title");
+    title.setAttribute("id", titleId);
+    title.setAttribute("placeholder", "title");
+    title.innerHTML = elementTitle;
+
+    let note = document.createElement("TEXTAREA");
+    note.setAttribute("class", "note");
+    note.setAttribute("id", noteId);
+    note.setAttribute("placeholder", "your note");
+    note.innerHTML = elementNote;
+
+    let deleteButton = document.createElement("BUTTON");
+    deleteButton.setAttribute("class", "removeButton")
+    deleteButton.setAttribute("id", buttonId);
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt fa-2x"/>';
+    deleteButton.addEventListener('click', function () {
+        localStorage.removeItem(this.parentElement.id);
+        this.parentElement.remove();
+    })
+    newNote.appendChild(title);
+    newNote.appendChild(note);
+    newNote.appendChild(deleteButton);
+    document.getElementById("noteCell").appendChild(newNote);
+
+    $(function() {
+        $(".newNote").draggable();
+    });
+}
+
+
+function saveToStorage() {
+    let elementList = document.getElementsByClassName("newNote");
+    for (let index = 0; index < elementList.length; index++) {
+        let element = elementList[index];
+        let key = element.id;
+
+        let elementContent = {'title': element.querySelector('.title').value,
+                            'note': element.querySelector('.note').value};
+
+        let elementToSave = JSON.stringify(elementContent);
+        localStorage.setItem(key, elementToSave);
     }
-})
-
-function drag(event) {
-    let style = window.getComputedStyle(event.target, null);
-    let str = (parseInt(style.getPropertyValue("left")) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top")) - event.clientY) + ',' + event.target.id;
-    event.dataTransfer.setData("Text", str);
 }
 
-function drop(event) {
-    let offset = event.dataTransfer.getData("Text").split(',');
-    let dm = document.getElementById(offset[2]);
-    dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-    dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
-    event.preventDefault();
-    return false;
+function loadFromStorage(title, note) {
+    for (let index = 0; index < localStorage.length; index++) {
+        let key = localStorage.key(index);
+        let elementContent = localStorage.getItem(key);
+        let elementToLoad = JSON.parse(elementContent);
+
+        title = elementToLoad.title;
+        note = elementToLoad.note;
+        createElement(title, note);
+    }
 }
 
-function dragOver(event) {
-    event.preventDefault();
-    return false;
-}
+ //noteCell to wszystkie notatki -> trzeba zmienic zeby podnosila sie tylko jedna
+

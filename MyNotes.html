@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>My Notes</title>
     <link rel="stylesheet" href="MyNotesStyle.css">
     <script src="MyNotesScript.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
-<body ondragover="dragOver(event)" ondrop="drop(event)">
-    <button id="add">
-        <i class="fas fa-plus"></i>
+<body>
+
+    <button id="addButton">
+        <i class="fas fa-plus fa-2x"> </i>
     </button>
-    <div class="note">
-        <div class="noteCell" draggable="true" ondragstart="drag(event)">
-            <label for="title"></label>
-            <input type="text" id="title" placeholder="title">
-            <label for="input1"></label>
-            <input type="text" id="input1" placeholder="your note">
-            <input id="btn" type="button" value="x">
-        </div>
+    <button id="save-button">
+        <i class="fas fa-save fa-2x"> </i>
+    </button>
+    <button id="load-button">
+        <i class="fas fa-tasks fa-2x"> </i>
+    </button>
+
+
+    <div class="note" id="note">
+        <div id="noteCell"></div>
     </div>
+
 </body>
 </html>
