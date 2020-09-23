@@ -1,5 +1,11 @@
 :root{
     --shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    --background-color: Transparent;
+    --position: relative;
+    --outline: none;
+    --font-weight: bolder;
+    --border: none;
+    --background-repeat: no-repeat;
 }
 
 * {
@@ -26,8 +32,6 @@ textarea {
     outline: 0;
     font-size: 1em;
     padding: 1em 1em 1em 1em;
-    background-color: Transparent;
-    background-repeat:no-repeat;
     resize: both;
 }
 
@@ -35,18 +39,12 @@ input[type=textarea], ::placeholder {
     color: #1f1519
 }
 
-.title {
-    font-weight: bold;
-}
-
 .newNote {
     padding: 2em;
     border-color: rgba(46,41,49,0.5);
     border-width: medium;
     border-style: solid;
-    position: relative;
     background-color: rgba(233,228,236,0.5);
-    box-shadow: var(--shadow);
     margin-top: 1em;
 }
 
@@ -58,29 +56,43 @@ input[type=textarea], ::placeholder {
     position: absolute;
     text-align: center;
     padding: 0.1em;
-    border: none;
-    outline:none;
-    background-color: Transparent;
-    font-weight: bolder;
 }
 
 #addButton, #save-button, #load-button {
     width: 6em;
     height: 6em;
-    position: relative;
-    border: none;
-    font-weight: bolder;
-    cursor:pointer;
+    cursor: pointer;
     overflow: hidden;
-    outline:none;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-}
-
-.removeButton:hover, #addButton:hover, #save-button:hover, #load-button:hover {
-    box-shadow: var(--shadow);
 }
 
 #noteCell {
     width: 20em;
+}
+
+textarea, #addButton, #save-button, #load-button {
+    background-repeat: var(--background-repeat);
+}
+
+.removeButton, #addButton, #save-button, #load-button {
+    border: var(--border);
+}
+
+.removeButton, #addButton, #save-button, #load-button {
+    outline: var(--outline);
+}
+
+textarea, .removeButton, #addButton, #save-button, #load-button {
+    background-color: var(--background-color);
+}
+
+.removeButton:hover, #addButton:hover, #save-button:hover, #load-button:hover, .newNote {
+    box-shadow: var(--shadow);
+}
+
+.newNote, #addButton, #save-button, #load-button {
+    position: var(--position);
+}
+
+.title, .removeButton, #addButton, #save-button, #load-button {
+    font-weight: var(--font-weight);
 }

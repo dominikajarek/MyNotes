@@ -78,5 +78,3 @@ function loadFromStorage(title, note) {
     }
 }
 
- //noteCell to wszystkie notatki -> trzeba zmienic zeby podnosila sie tylko jedna
-
